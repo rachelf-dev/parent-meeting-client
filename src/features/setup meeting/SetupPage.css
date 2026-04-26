@@ -1,0 +1,87 @@
+/* src/features/setup-meeting/styles/SetupPage.css */
+.setup-container {
+    padding: 40px;
+    direction: rtl;
+    max-width: 1000px;
+    margin: auto;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    color: #333;
+}
+
+.setup-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 3px solid #3498db;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+}
+
+.setup-section {
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    margin-bottom: 30px;
+    border: 1px solid #e1e8ed;
+}
+
+.file-upload-zone {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    border: 2px dashed #cbd5e0;
+}
+
+.setup-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.setup-input {
+    padding: 12px;
+    border: 1px solid #ced4da;
+    border-radius: 6px;
+    font-size: 15px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.btn-primary {
+    padding: 12px 24px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.btn-primary:hover:not(:disabled) { background-color: #2980b9; }
+.btn-primary:disabled { background-color: #bdc3c7; cursor: not-allowed; }
+
+.btn-success { background-color: #27ae60; }
+.btn-success:hover { background-color: #219150; }
+
+.btn-secondary {
+    background-color: #edf2f7;
+    color: #4a5568;
+    border: 1px solid #cbd5e0;
+    padding: 10px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.btn-logout {
+    background-color: #e53e3e;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
