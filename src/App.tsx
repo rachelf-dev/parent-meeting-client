@@ -2,7 +2,6 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import SetupPage from './features/setup meeting/SetupPage';
-// import DashboardPage from './pages/DashboardPage'; // זה הדף שמציג את ההורים
 
 function App() {
   return (

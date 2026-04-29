@@ -1,9 +1,11 @@
-// src/features/setup-meeting/services/setupService.ts
+// src/features/setup-meeting/setupService.ts
+import api from '../../api/axiosInstance';
 import ExcelJS from 'exceljs';
 import saveAs from 'file-saver';
-import api from '../../api/axiosInstance';
 
-export const downloadTemplate = async () => {
+export const setupService = {
+  // הורדת תבנית אקסל ריקה עבור המשתמש
+  downloadTemplate: async () => {
     const workbook = new ExcelJS.Workbook();
     const worksheet = workbook.addWorksheet('Students');
     
@@ -18,22 +20,34 @@ export const downloadTemplate = async () => {
         { header: 'מייל', key: 'email', width: 25 },
     ];
 
-    worksheet.addRow(['רחל', 'כהן', '328369350', "א'1", 'מיכל לוי', '21372966', 'אסתר כהן', 'e0583215063@gmail.com']);
-    
-    const headerRow = worksheet.getRow(1);
-    headerRow.font = { bold: true, color: { argb: 'FFFFFFFF' } };
-    headerRow.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF3498DB' } };
+    // הוספת שורת דוגמה
+    worksheet.addRow(['ישראל', 'ישראלי', '123456789', "א1", 'מיכל לוי', '987654321', 'אברהם ישראלי', 'test@gmail.com']);
 
     const buffer = await workbook.xlsx.writeBuffer();
     saveAs(new Blob([buffer]), 'School_Template.xlsx');
-};
+  },
 
-export const uploadExcelFile = async (file: File) => {
+  // העלאת קובץ האקסל לשרת
+  uploadExcelFile: async (file: File) => {
     const formData = new FormData();
     formData.append('file', file);
     
-    // שליחה לנתיב המעודכן ב-C#
     return api.post('/School/import-excel', formData, {
-        headers: { 'Content-Type': 'multipart/form-data' }
+      headers: { 'Content-Type': 'multipart/form-data' }
     });
+  },
+
+  // שמירת פרטי הפגישה (תאריך, שעות ומשך פגישה)
+  saveMeetingDetails: async (data: any) => {
+    // בניית האובייקט בדיוק כפי ש-C# מצפה לקבל ב-MeetingSetupDto
+    const payload = {
+      Date: data.date,                         // פורמט YYYY-MM-DD
+      StartTime: data.startTime + ":00",       // הוספת שניות עבור TimeSpan
+      EndTime: data.endTime + ":00",           // הוספת שניות עבור TimeSpan
+      Duration: Number(data.duration)          // המרה למספר (Integer)
+    };
+
+    console.log("Sending payload to server:", payload);
+    return api.post('/School/setup-meeting', payload);
+  }
 };
