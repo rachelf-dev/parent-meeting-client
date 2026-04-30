@@ -15,7 +15,7 @@ export default function LoginPage() {
       localStorage.setItem('token', response.token);
       localStorage.setItem('schoolName', response.name);
       localStorage.setItem('schoolId', response.id); 
-      navigate('/setup'); 
+      navigate('/dashboard'); 
     } catch (err: any) {
       // בדיקה אם יש הודעה ספציפית מהשרת, אחרת הודעת ברירת מחדל
       const msg = err.response?.data?.message || "שם בית ספר או סיסמה שגויים";

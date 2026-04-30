@@ -59,3 +59,34 @@
     border-radius: 6px;
     font-size: 16px;
 }
+
+.setup-nav-bar {
+    display: flex;
+    justify-content: flex-start; /* הצמדה לימין/שמאל לפי העדפה */
+    padding: 15px 0;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #e0e6ed;
+}
+
+/* עיצוב כפתור חזרה לדף הבית */
+.nav-btn-back {
+    background-color: #ffffff;
+    color: #3498db;
+    border: 2px solid #3498db;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.nav-btn-back:hover {
+    background-color: #3498db;
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(52, 152, 219, 0.2);
+}
+

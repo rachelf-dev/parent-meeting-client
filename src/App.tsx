@@ -1,16 +1,22 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import LoginPage from './pages/LoginPage';
-import RegisterPage from './pages/RegisterPage';
-import SetupPage from './features/setup meeting/SetupPage';
+import DashboardPage from './features/dashboard/DashboardPage';
+import SetupMeetingPage from './features/setup-meeting/SetupPage'; // וודאי שהנתיב נכון
 
 function App() {
   return (
     <Router>
       <Routes>
+        {/* כשהאתר עולה, נשלח ללוגין */}
+        <Route path="/" element={<Navigate to="/login" />} />
+        
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/register" element={<RegisterPage />} />
-        <Route path="/setup" element={<SetupPage />} />
-        <Route path="*" element={<Navigate to="/login" />} />
+        
+        {/* הנתיב של הדף החדש */}
+        <Route path="/dashboard" element={<DashboardPage />} />
+        
+        {/* הנתיב של דף ההגדרות */}
+        <Route path="/setup-meeting" element={<SetupMeetingPage />} />
       </Routes>
     </Router>
   );
