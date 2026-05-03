@@ -6,10 +6,10 @@ import { useNavigate, Link } from 'react-router-dom';
 export default function LoginPage() {
   const { register, handleSubmit } = useForm();
   const navigate = useNavigate();
-  const [errorMessage, setErrorMessage] = useState<string | null>(null); // State לשגיאה
+  const [errorMessage, setErrorMessage] = useState<string | null>(null); 
 
   const onSubmit = async (data: any) => {
-    setErrorMessage(null); // איפוס שגיאה לפני ניסיון חדש
+    setErrorMessage(null); 
     try {
       const response = await authService.login(data);
       localStorage.setItem('token', response.token);
@@ -17,7 +17,6 @@ export default function LoginPage() {
       localStorage.setItem('schoolId', response.id); 
       navigate('/dashboard'); 
     } catch (err: any) {
-      // בדיקה אם יש הודעה ספציפית מהשרת, אחרת הודעת ברירת מחדל
       const msg = err.response?.data?.message || "שם בית ספר או סיסמה שגויים";
       setErrorMessage(msg);
     }

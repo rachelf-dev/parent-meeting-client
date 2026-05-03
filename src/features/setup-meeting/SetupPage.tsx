@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { setupService } from './setupService';
 import SuccessModal from '../../components/SuccessModal'; // ודאי שהנתיב תואם למיקום הקובץ שיצרת
 import './SetupPage.css';
-
+// להוסיף את ההצלחה בהכל ולשנות אותו
 export default function SetupPage() {
   const { register, handleSubmit } = useForm();
   const navigate = useNavigate();

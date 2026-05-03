@@ -4,7 +4,6 @@ import ExcelJS from 'exceljs';
 import saveAs from 'file-saver';
 
 export const setupService = {
-  // הורדת תבנית אקסל ריקה עבור המשתמש
   downloadTemplate: async () => {
     const workbook = new ExcelJS.Workbook();
     const worksheet = workbook.addWorksheet('Students');
@@ -21,7 +20,7 @@ export const setupService = {
     ];
 
     // הוספת שורת דוגמה
-    worksheet.addRow(['ישראל', 'ישראלי', '123456789', "א1", 'מיכל לוי', '987654321', 'אברהם ישראלי', 'test@gmail.com']);
+    worksheet.addRow(['ישראל', 'ישראלי', '123456789', "א1", 'מיכאל לוי', '987654321', 'אברהם ישראלי', 'test@gmail.com']);
 
     const buffer = await workbook.xlsx.writeBuffer();
     saveAs(new Blob([buffer]), 'School_Template.xlsx');

@@ -14,7 +14,7 @@ export default function SuccessModal({ isOpen, onClose }: SuccessModalProps) {
 
   const handleContinue = () => {
     onClose();
-    navigate('/dashboard'); // מוביל לדף הבית כפי שביקשת
+    navigate('/dashboard');
   };
 
   return (
