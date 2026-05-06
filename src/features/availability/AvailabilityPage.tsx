@@ -16,25 +16,32 @@ export default function AvailabilityPage() {
   const onAddAvailability = async (data: any) => {
     setLoading(true);
     try {
+      // יצירת אובייקט התואם בדיוק ל-DTO ב-C#
       const payload = {
-        parentId: Number(data.parentId),
-        // הוספת שניות לפורמט הזמן עבור TimeSpan ב-C#
-        startTime: `${data.startTime}:00`, 
-        endTime: `${data.endTime}:00`,
-        isAvailable: data.isAvailable,
-        // המרת התאריך שנבחר לפורמט ISO תקני
-        meetingDate: new Date(data.meetingDate).toISOString(),
-        schoolId: Number(localStorage.getItem('schoolId')) || 0
+        // המרת המזהה למספר
+        ParentId: data.parentId ? Number(data.parentId) : null,
+        ParentIdentity: data.parentId.toString(),
+        // המרת התאריך לפורמט ISO שהשרת מצפה לו
+        MeetingDate: new Date(data.meetingDate).toISOString(),
+        // משיכת מזהה בית הספר מה-LocalStorage
+        SchoolId: Number(localStorage.getItem('schoolId')) || 0,
+        // פורמט TimeSpan עבור C# (שעות:דקות:שניות)
+        StartTime: `${data.startTime}:00`, 
+        EndTime: `${data.endTime}:00`,
+        // הבטחת ערך בוליאני
+        IsAvailable: Boolean(data.isAvailable)
       };
 
+      // קריאה לפונקציית השירות
       await availabilityService.addParentAvailability(payload);
       
       setShowSuccessNote(true);
       reset(); 
       setTimeout(() => setShowSuccessNote(false), 3000);
     } catch (err) {
+      // במקרה של שגיאת 400, מומלץ לבדוק את ה-Response ב-Network Tab
       console.error("שגיאה בשמירה:", err);
-      alert("לא ניתן לשמור את הנתונים. ודא שהתחברת למערכת ושהשרת רץ.");
+      alert("חלה שגיאה בשמירת הנתונים. וודא שכל השדות מלאים כראוי.");
     } finally {
       setLoading(false);
     }
@@ -47,7 +54,7 @@ export default function AvailabilityPage() {
       setIsModalOpen(true); 
     } catch (err) {
       console.error("שגיאה ביצירת שיבוץ:", err);
-      alert("שגיאה בתהליך יצירת השיבוץ");
+      alert("לא ניתן היה ליצור שיבוץ כרגע.");
     } finally {
       setLoading(false);
     }
@@ -73,7 +80,6 @@ export default function AvailabilityPage() {
               <input type="number" {...register("parentId")} required placeholder="הכנס קוד הורה" />
             </div>
 
-            {/* שדה תאריך חדש */}
             <div className="input-group">
               <label>תאריך הפגישה</label>
               <input type="date" {...register("meetingDate")} required />
