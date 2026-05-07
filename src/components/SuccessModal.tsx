@@ -21,8 +21,8 @@ export default function SuccessModal({ isOpen, onClose }: SuccessModalProps) {
     <div className="modal-overlay">
       <div className="modal-content">
         <div className="modal-icon">✅</div>
-        <h2 className="modal-title">שלב 1 הושלם בהצלחה!</h2>
-        <p className="modal-text">הגדרות האסיפה ורשימת התלמידים נשמרו במערכת.</p>
+        <h2 className="modal-title">הפעולה הושלמה בהצלחה!</h2>
+        <p className="modal-text">הנתונים נשמרו במערכת.</p>
         <button className="modal-btn" onClick={handleContinue}>
           להמשך - לדף הבית
         </button>

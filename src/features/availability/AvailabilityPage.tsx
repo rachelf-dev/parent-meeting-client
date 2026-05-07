@@ -92,8 +92,8 @@ const confirmDelete = async () => {
             <h2>הגדרת זמינות הורה</h2>
             <form onSubmit={handleSubmit(onAddAvailability)} className="availability-form">
               <div className="input-group">
-                <label>מזהה הורה (ID/ת"ז)</label>
-                <input type="text" {...register("parentId")} required placeholder="הכנס מזהה" />
+                <label>תעודת זהות הורה</label>
+                <input type="text" {...register("parentId")} required placeholder="הכנס תעודת זהות" />
               </div>
               <div className="input-group">
                 <label>תאריך הפגישה</label>
@@ -159,6 +159,7 @@ const confirmDelete = async () => {
           <div className="action-box">
             <h3>יצירת לוח פגישות סופי</h3>
             <p>לאחר הזנת כל זמני הזמינות, לחץ כאן כדי להריץ את השיבוץ האוטומטי.</p>
+            <br></br>
             <button onClick={async () => {
               setLoading(true);
               try {

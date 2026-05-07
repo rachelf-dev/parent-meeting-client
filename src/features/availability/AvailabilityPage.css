@@ -1,82 +1,54 @@
-/* מכולה ראשית */
+/* מכולה ראשית ופריסה */
 .availability-container {
-    max-width: 1000px;
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 30px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 20px;
     direction: rtl;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* סרגל ניווט עליון */
-.nav-bar {
-    display: flex;
-    justify-content: flex-start;
-    margin-bottom: 25px;
-}
-
-.nav-btn-back {
-    background-color: #ffffff;
-    color: #4a5568;
-    border: 1px solid #cbd5e0;
-    padding: 8px 16px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: 500;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    transition: all 0.2s;
-}
-
-.nav-btn-back:hover {
-    background-color: #edf2f7;
-    border-color: #a0aec0;
-}
-
-/* כותרת הדף */
 .page-title {
-    color: #2d3748;
-    font-size: 2rem;
-    margin-bottom: 40px;
     text-align: center;
+    color: #2d3748;
+    margin-bottom: 40px;
     border-bottom: 2px solid #edf2f7;
     padding-bottom: 15px;
 }
 
-/* פריסת התוכן - שני טורים */
 .content-layout {
     display: grid;
-    grid-template-columns: 1.2fr 0.8fr;
-    gap: 30px;
+    grid-template-columns: 1.2fr 0.8fr; /* צד ימין רחב יותר לטופס ורשימה */
+    gap: 40px;
+    align-items: start;
 }
 
-/* סקשן הטופס */
-.availability-form-section {
+/* סקשנים (טופס וקופסת פעולה) */
+.availability-form-section, .action-box {
     background: #ffffff;
     padding: 25px;
-    border-radius: 15px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
     border: 1px solid #e2e8f0;
 }
 
-.availability-form-section h2 {
+/* כותרות סקשנים */
+.availability-form-section h2, .action-box h3 {
     color: #4a5568;
-    font-size: 1.25rem;
     margin-bottom: 20px;
 }
 
 /* קבוצות קלט */
 .input-group {
-    margin-bottom: 18px;
+    margin-bottom: 15px;
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    text-align: right;
 }
 
 .input-group label {
+    margin-bottom: 6px;
     font-weight: 600;
     color: #4a5568;
-    font-size: 0.95rem;
 }
 
 .input-group input {
@@ -93,7 +65,6 @@
     box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.15);
 }
 
-/* טווח זמנים בשורה אחת */
 .time-range {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -103,9 +74,11 @@
 /* תיבת סימון (Checkbox) */
 .checkbox-group {
     margin: 20px 0;
-    padding: 10px;
+    padding: 12px;
     background: #f7fafc;
     border-radius: 8px;
+    display: flex;
+    align-items: center;
 }
 
 .switch-label {
@@ -117,12 +90,12 @@
     color: #2d3748;
 }
 
-/* כפתור שמירת פריט */
+/* כפתורים */
 .btn-save-item {
     width: 100%;
+    padding: 14px;
     background-color: #3182ce;
     color: white;
-    padding: 14px;
     border: none;
     border-radius: 8px;
     font-size: 1.1rem;
@@ -131,59 +104,83 @@
     transition: background 0.2s;
 }
 
-.btn-save-item:hover {
-    background-color: #2b6cb0;
-}
+.btn-save-item:hover { background-color: #2b6cb0; }
+.btn-save-item:disabled { background-color: #a0aec0; cursor: not-allowed; }
 
-.btn-save-item:disabled {
-    background-color: #a0aec0;
-    cursor: not-allowed;
-}
-
-/* הודעת הצלחה זמנית */
-.success-note {
-    margin-top: 15px;
-    padding: 10px;
-    background-color: #f0fff4;
-    color: #2f855a;
-    border: 1px solid #c6f6d5;
-    border-radius: 6px;
-    text-align: center;
+.btn-toggle-list {
+    width: 100%;
+    margin-top: 20px;
+    padding: 12px;
+    background: #edf2f7;
+    border: 1px solid #cbd5e0;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.2s;
     font-weight: 500;
-    animation: fadeIn 0.3s ease;
 }
 
-/* סקשן יצירת שיבוץ סופי */
-.generate-section {
+/* רשימת אילוצים וכרטיסיות */
+.availabilities-list {
+    margin-top: 15px;
+    max-height: 500px;
+    overflow-y: auto;
+    padding-left: 5px;
+}
+
+.availability-card {
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background: #f8fafc;
+    border-right: 4px solid #3182ce;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    min-height: fit-content;
 }
 
+.card-info {
+    display: flex;
+    flex-wrap: wrap; /* מונע גלישה מחוץ לכרטיסייה */
+    align-items: center;
+    gap: 12px;
+    flex: 1;
+}
+
+.card-info strong, .card-info span, .card-info small {
+    white-space: nowrap; /* שומר על צמדי מילים יחד */
+}
+
+/* --- עיצוב הפח האדום --- */
+.btn-delete-trash {
+    background: transparent;
+    border: 1px solid #e53e3e;
+    color: #e53e3e;
+    font-size: 1.2rem;
+    padding: 6px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-right: 10px;
+}
+
+.btn-delete-trash:hover {
+    background: #e53e3e;
+    color: white;
+}
+
+/* צד שמאל - יצירת שיבוץ */
 .action-box {
-    background: #ebf8ff;
-    padding: 30px;
-    border-radius: 15px;
     border: 2px dashed #4299e1;
     text-align: center;
+    background: #ebf8ff;
 }
 
-.action-box h3 {
-    color: #2a4365;
-    margin-bottom: 12px;
-}
-
-.action-box p {
-    color: #4a5568;
-    font-size: 0.9rem;
-    line-height: 1.5;
-    margin-bottom: 25px;
-}
-
-/* כפתור יצירת שיבוץ סופי */
 .btn-generate-final {
+    padding: 16px 30px;
     background-color: #48bb78;
     color: white;
-    padding: 16px 30px;
     border: none;
     border-radius: 50px;
     font-size: 1.2rem;
@@ -196,177 +193,13 @@
 .btn-generate-final:hover {
     background-color: #38a169;
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(72, 187, 120, 0.5);
-}
-
-.btn-generate-final:active {
-    transform: translateY(0);
-}
-
-/* אנימציות */
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-10px); }
-    to { opacity: 1; transform: translateY(0); }
 }
 
 /* התאמה לניידים */
-@media (max-width: 768px) {
-    .content-layout {
-        grid-template-columns: 1fr;
-    }
-    
-    .page-title {
-        font-size: 1.5rem;
-    }
-}
-
-
-/* עיצוב כללי לקבוצת קלט */
-.input-group {
-  margin-bottom: 15px;
-  display: flex;
-  flex-direction: column;
-  text-align: right;
-}
-
-.input-group label {
-  margin-bottom: 5px;
-  font-weight: bold;
-  color: #333;
-}
-
-/* עיצוב אחיד לכל סוגי הקלט: טקסט, מספר, זמן ותאריך */
-.availability-form input[type="number"],
-.availability-form input[type="time"],
-.availability-form input[type="date"] {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-family: inherit;
-  font-size: 1rem;
-}
-
-/* ריווח מיוחד לתאריך וזמן כדי שייראו טוב בדפדפנים שונים */
-input[type="date"]::-webkit-calendar-picker-indicator,
-input[type="time"]::-webkit-calendar-picker-indicator {
-  cursor: pointer;
-  filter: invert(0.5); /* הופך את האייקון למעט יותר עדין */
-}
-.availability-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-    direction: rtl;
-    font-family: sans-serif;
-}
-
-.page-title { text-align: center; color: #2d3748; margin-bottom: 30px; }
-
-/* פריסת הטורים */
-.content-layout {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
-    align-items: start;
-}
-
-/* עיצוב הטופס והסקשנים */
-.availability-form-section, .action-box {
-    background: #ffffff;
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-}
-
-.input-group { margin-bottom: 15px; display: flex; flex-direction: column; }
-.input-group label { font-weight: bold; margin-bottom: 5px; }
-.input-group input { padding: 10px; border: 1px solid #ddd; border-radius: 6px; }
-
-.time-range { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-
-.btn-save-item {
-    width: 100%;
-    padding: 12px;
-    background: #3182ce;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-weight: bold;
-}
-
-/* כפתור הצגה/הסתרה */
-.btn-toggle-list {
-    width: 100%;
-    margin-top: 20px;
-    padding: 10px;
-    background: #edf2f7;
-    border: 1px solid #cbd5e0;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: 0.2s;
-}
-
-/* רשימת אילוצים */
-.availabilities-list {
-    margin-top: 15px;
-    max-height: 400px;
-    overflow-y: auto;
-}
-
-.availability-card {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 12px;
-    background: #f8fafc;
-    border-right: 4px solid #3182ce;
-    margin-bottom: 8px;
-    border-radius: 4px;
-}
-
-/* --- דרישת הפח האדום --- */
-.btn-delete-trash {
-    background: transparent;
-    border: 1px solid #e53e3e;
-    color: #e53e3e; /* צבע הפח אדום */
-    font-size: 1.2rem;
-    padding: 5px 10px;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.btn-delete-trash:hover {
-    background: #e53e3e; /* רקע אדום במעבר עכבר */
-    color: white;       /* הפח הופך ללבן */
-}
-
-/* צד שמאל */
-.action-box {
-    border: 2px dashed #4299e1;
-    text-align: center;
-    background: #ebf8ff;
-}
-
-.btn-generate-final {
-    padding: 15px 30px;
-    background: #48bb78;
-    color: white;
-    border: none;
-    border-radius: 50px;
-    font-size: 1.1rem;
-    font-weight: bold;
-    cursor: pointer;
-    box-shadow: 0 4px 10px rgba(72,187,120,0.3);
-}
-
-/* התאמה למסכים קטנים - הופך לטור אחד */
 @media (max-width: 900px) {
-    .content-layout {
-        grid-template-columns: 1fr;
-    }
+    .content-layout { grid-template-columns: 1fr; }
+    .page-title { font-size: 1.5rem; }
 }
 
-.fade-in { animation: fadeIn 0.3s; }
+.fade-in { animation: fadeIn 0.3s ease; }
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
