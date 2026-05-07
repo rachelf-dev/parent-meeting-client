@@ -252,3 +252,121 @@ input[type="time"]::-webkit-calendar-picker-indicator {
   cursor: pointer;
   filter: invert(0.5); /* הופך את האייקון למעט יותר עדין */
 }
+.availability-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    direction: rtl;
+    font-family: sans-serif;
+}
+
+.page-title { text-align: center; color: #2d3748; margin-bottom: 30px; }
+
+/* פריסת הטורים */
+.content-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: start;
+}
+
+/* עיצוב הטופס והסקשנים */
+.availability-form-section, .action-box {
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.input-group { margin-bottom: 15px; display: flex; flex-direction: column; }
+.input-group label { font-weight: bold; margin-bottom: 5px; }
+.input-group input { padding: 10px; border: 1px solid #ddd; border-radius: 6px; }
+
+.time-range { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+.btn-save-item {
+    width: 100%;
+    padding: 12px;
+    background: #3182ce;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* כפתור הצגה/הסתרה */
+.btn-toggle-list {
+    width: 100%;
+    margin-top: 20px;
+    padding: 10px;
+    background: #edf2f7;
+    border: 1px solid #cbd5e0;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+/* רשימת אילוצים */
+.availabilities-list {
+    margin-top: 15px;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.availability-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    background: #f8fafc;
+    border-right: 4px solid #3182ce;
+    margin-bottom: 8px;
+    border-radius: 4px;
+}
+
+/* --- דרישת הפח האדום --- */
+.btn-delete-trash {
+    background: transparent;
+    border: 1px solid #e53e3e;
+    color: #e53e3e; /* צבע הפח אדום */
+    font-size: 1.2rem;
+    padding: 5px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-delete-trash:hover {
+    background: #e53e3e; /* רקע אדום במעבר עכבר */
+    color: white;       /* הפח הופך ללבן */
+}
+
+/* צד שמאל */
+.action-box {
+    border: 2px dashed #4299e1;
+    text-align: center;
+    background: #ebf8ff;
+}
+
+.btn-generate-final {
+    padding: 15px 30px;
+    background: #48bb78;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(72,187,120,0.3);
+}
+
+/* התאמה למסכים קטנים - הופך לטור אחד */
+@media (max-width: 900px) {
+    .content-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+.fade-in { animation: fadeIn 0.3s; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
