@@ -4,6 +4,7 @@ import DashboardPage from './features/dashboard/DashboardPage';
 import SetupMeetingPage from './features/setup-meeting/SetupPage'; 
 import RegisterPage from './pages/RegisterPage';
 import AvailabilityPage from './features/availability/AvailabilityPage';
+import ExportPage from './features/export/ExportPage';
 import ProtectedRoute from './components/ProtectedRoute';
 
 function App() {
@@ -21,6 +22,9 @@ function App() {
         <Route path="/setup-meeting" element={ <ProtectedRoute> <SetupMeetingPage /> </ProtectedRoute> } /> 
 
         <Route path="/availability" element={ <ProtectedRoute> <AvailabilityPage /> </ProtectedRoute> } />        
+
+        {/* <Route path="/export" element={ <ProtectedRoute> <ExportPage /> </ProtectedRoute> } />         */}
+        <Route path="/export" element={ <ProtectedRoute> <ExportPage /> </ProtectedRoute> } />        
 
 
       </Routes>

@@ -1,0 +1,48 @@
+/* מיכל כפתורי הייצוא */
+.export-container {
+  display: flex;
+  gap: 12px;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  margin: 20px 0;
+  direction: rtl;
+}
+
+/* סגנון כפתור בסיסי */
+.export-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: white;
+}
+
+/* כפתור אקסל - ירוק מותאם */
+.btn-excel {
+  background-color: #217346;
+}
+
+/* כפתור PDF - אדום/בורדו מותאם */
+.btn-pdf {
+  background-color: #c4302b;
+}
+
+/* אפקטים במעבר עכבר */
+.export-btn:hover {
+  filter: brightness(1.1);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.export-btn:active {
+  transform: translateY(0);
+}
