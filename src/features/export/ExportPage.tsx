@@ -4,9 +4,10 @@ import { exportToExcel, exportToPDF } from './ExportService';
 import api from '../../api/axiosInstance'; 
 import './ExportPage.css';
 
-// הגדרת הממשק ישירות כאן בהתאם לסגנון שלך
 export interface ParentMeetingDto {
   studentId: number;
+  studentName: string; 
+  parentName: string;
   teacherName: string;
   className: string;
   startTime: string;

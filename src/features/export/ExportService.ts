@@ -8,15 +8,19 @@ export const exportToExcel = async (data: ParentMeetingDto[], fileName: string) 
   const workbook = new ExcelJS.Workbook();
   const worksheet = workbook.addWorksheet('פגישות');
 
+  // הגדרת עמודות חדשה עם שמות במקום IDs
   worksheet.columns = [
-    { header: 'תלמיד', key: 'studentId', width: 15 },
+    { header: 'שם התלמיד', key: 'studentName', width: 20 },
+    { header: 'שם ההורה', key: 'parentName', width: 20 },
     { header: 'מורה', key: 'teacherName', width: 20 },
     { header: 'כיתה', key: 'className', width: 10 },
-    { header: 'התחלה', key: 'startTime', width: 12 },
-    { header: 'סיום', key: 'endTime', width: 12 },
+    { header: 'התחלה', key: 'startTime', width: 15 },
+    { header: 'סיום', key: 'endTime', width: 15 },
   ];
 
   worksheet.addRows(data);
+
+  worksheet.getRow(1).font = { bold: true };
 
   const buffer = await workbook.xlsx.writeBuffer();
   saveAs(new Blob([buffer]), `${fileName}.xlsx`);
